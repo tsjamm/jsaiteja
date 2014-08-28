@@ -1,4 +1,6 @@
 
+@mobile-max-width:767px;
+@desktop-min-width:768px;
 
 @menu-width: 300px;
 @menu-inner-padding:20px;
@@ -16,12 +18,20 @@ body
 
 .menu
 {
-	width: @menu-width;
-    height: 100%;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
+	@media only screen and (min-width: @desktop-min-width)
+	{
+		width: @menu-width;
+    	height: 100%;
+    	position: fixed;
+    	left: 0px;
+    	top: 0px;
+    	bottom: 0px;
+    }
+    @media only screen and (max-width: @mobile-max-width)
+	{
+		text-align:center;
+    }
+    
     background-color: @side-color;
     color: white;
     overflow-x: hidden;
@@ -33,24 +43,25 @@ body
 		{
 			img
 			{
-				width:@logo-size;
-				height:@logo-size;
+				width:100%;
+				max-width:@logo-size;
+				//height:@logo-size;
 			}
 		}
 	}
 	
-	.info
+	.info,.links
 	{
 		padding:@menu-inner-padding;
-	}
-	
-	.links
-	{
-		padding:@menu-inner-padding;
-		
-		a
+	    
+	    h2
+	    {
+	        margin:0px;
+	    }
+	    
+	    a
 		{
-			color:white;
+			color:#ccc;
 			font-weight:bold;
 			text-decoration:none;
 			
@@ -64,12 +75,16 @@ body
 
 .main
 {
-	height: 100%;
-    position: fixed;
-    right: 0px;
-	top: 0px;
-	bottom: 0px;
-    left: @menu-width;
+	@media only screen and (min-width: @desktop-min-width)
+	{
+		height: 100%;
+    	position: fixed;
+    	right: 0px;
+		top: 0px;
+		bottom: 0px;
+    	left: @menu-width;
+    }
+    
     background-color: #f7f7f7;
 	color: #444;
 	text-align:center;
@@ -83,6 +98,10 @@ body
 	.content
 	{
 		width: 50%;
+		@media only screen and (max-width: @mobile-max-width)
+		{
+			width:90%;
+		}
 		margin:0 auto;
 		
 		img
